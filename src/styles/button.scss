@@ -1,0 +1,30 @@
+.btn {
+  height: 40px;
+  width: 6.5rem;
+
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 0.1rem;
+
+  background-color: var(--gray-400);
+  color: var(--gray);
+
+  font-size: var(--title-3);
+  font-weight: var(--weight-2);
+  line-height: 1.0588rem;
+
+  border-radius: var(--radius-1);
+  transition: 1s;
+
+  &.remove {
+    height: 3.75rem;
+    width: 100%;
+    padding-top: 0.2rem;
+  }
+}
+
+.btn:hover {
+  background-color: var(--color-primary);
+  transition: 1s;
+}

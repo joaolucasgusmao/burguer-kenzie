@@ -1,26 +1,108 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CartModal } from "../../components/CartModal";
 import { Header } from "../../components/Header";
 import { ProductList } from "../../components/ProductList";
+import styles from "./style.module.scss";
+import { api } from "../../api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Loading } from "../../components/Loading";
 
 export const HomePage = () => {
-   const [productList, setProductList] = useState([]);
-   const [cartList, setCartList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [productList, setProductList] = useState([]);
+  const [cartList, setCartList] = useState(() => {
+    const storedCartList = localStorage.getItem("@Products");
+    return storedCartList ? JSON.parse(storedCartList) : [];
+  });
+  const [modalOpen, setModalOpen] = useState(null);
+  const [value, setValue] = useState(0);
 
-   // useEffect montagem - carrega os produtos da API e joga em productList
-   // useEffect atualização - salva os produtos no localStorage (carregar no estado)
-   // adição, exclusão, e exclusão geral do carrinho
-   // renderizações condições e o estado para exibir ou não o carrinho
-   // filtro de busca
-   // estilizar tudo com sass de forma responsiva
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        setLoading(true);
+        const request = await api.get("/products");
+        const { data } = request;
+        setProductList(data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getProducts();
+  }, []);
 
-   return (
-      <>
-         <Header />
-         <main>
-            <ProductList productList={productList} />
-            <CartModal cartList={cartList} />
-         </main>
-      </>
-   );
+  const addToCart = (productToAdd) => {
+    const isProductInCart = cartList.some(
+      (product) => product.id === productToAdd.id
+    );
+
+    !isProductInCart
+      ? (() => {
+          setCartList([...cartList, productToAdd]);
+          toast.success("Produto adicionado ao carrinho!");
+        })()
+      : toast.error("Este produto já foi adicionado ao carrinho!");
+  };
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const handleClickOutsideModal = (event) => {
+    if (modalOpen && event.target.id === "modalOverlay") {
+      closeModal();
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (modalOpen && event.keyCode === 27) {
+      closeModal();
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("@Products", JSON.stringify(cartList));
+  }, [cartList]);
+
+  useEffect(() => {
+    setValue(cartList.length);
+
+    document.addEventListener("click", handleClickOutsideModal);
+    document.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutsideModal);
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [cartList, modalOpen]);
+
+  return (
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Header value={value} openModal={openModal} />
+          <main className={styles.main}>
+            <ProductList productList={productList} addToCart={addToCart} />
+            {modalOpen ? (
+              <CartModal
+                cartList={cartList}
+                closeModal={closeModal}
+                setCartList={setCartList}
+              />
+            ) : null}
+          </main>
+          <ToastContainer autoClose={2000} />
+        </>
+      )}
+    </>
+  );
 };

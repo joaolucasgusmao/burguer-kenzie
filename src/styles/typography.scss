@@ -1,0 +1,48 @@
+.title {
+  font-size: var(--title-1);
+  font-weight: var(--weight-1);
+  line-height: 1.5rem;
+
+  color: var(--gray-600);
+
+  &.cart {
+    line-height: 1.75rem;
+    color: var(--gray);
+  }
+
+  &.productCart {
+    line-height: 0rem;
+  }
+}
+
+.productType {
+  font-size: var(--title-3);
+  font-weight: var(--weight-3);
+  line-height: 1.0588rem;
+
+  color: var(--gray-300);
+}
+
+.productPrice {
+  font-size: var(--title-3);
+  font-weight: var(--weight-2);
+  line-height: 1.5rem;
+
+  color: var(--color-primary);
+
+  &.total {
+    color: var(--gray-600);
+  }
+
+  &.totalPrice {
+    color: var(--gray-300);
+  }
+}
+
+.buttonRemove {
+  font-size: var(--title-2);
+  font-weight: var(--weight-2);
+  line-height: 1.21rem;
+
+  color: var(--gray);
+}

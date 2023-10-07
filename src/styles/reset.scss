@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: var(--font-primary);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
