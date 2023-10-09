@@ -68,20 +68,14 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
+    setValue(cartList.length);
     localStorage.setItem("@Products", JSON.stringify(cartList));
   }, [cartList]);
 
   useEffect(() => {
-    setValue(cartList.length);
-
     document.addEventListener("click", handleClickOutsideModal);
     document.addEventListener("keydown", handleKeyPress);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutsideModal);
-      document.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [cartList, modalOpen]);
+  }, [modalOpen]);
 
   return (
     <>
