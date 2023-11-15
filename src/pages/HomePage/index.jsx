@@ -94,7 +94,7 @@ export const HomePage = () => {
               />
             ) : null}
           </main>
-          <ToastContainer autoClose={2000} />
+          <ToastContainer autoClose={1000} />
         </>
       )}
     </>
