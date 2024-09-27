@@ -1,16 +1,16 @@
 ### Burguer Kenzie
-Burger Kenzie é uma aplicação que simula um ecommerce de fast food, permitindo ao usuário selecionar e adicionar produtos desejados ao carrinho. Além disso, há a opção de remover todos os produtos, e o valor total dos itens selecionados é calculado automaticamente.
+Burger Kenzie is an application that simulates a fast food e-commerce, allowing the user to select and add desired products to the cart. Additionally, there is an option to remove all products, and the total value of selected items is automatically calculated.
 <hr>
 
-#### Funcionalidades: 
-- Seleção de Produtos: Os usuários podem navegar e escolher produtos do menu disponível.
-- Adição ao Carrinho: Funcionalidade que permite aos usuários adicionar produtos selecionados ao carrinho de compras.
-- Remoção de Produtos: Os usuários têm a capacidade de remover produtos individualmente ou limpar o carrinho completamente.
-- Cálculo Automático: O aplicativo realiza automaticamente o cálculo do valor total com base nos produtos selecionados.
-- Persistência dos Produtos: Os produtos selecionados pelos usuários permanecem no carrinho mesmo após a atualização da página, garantindo uma experiência contínua e evitando a perda de seleções durante a navegação.
+#### Features: 
+- Product Selection: Users can browse and choose products from the available menu.
+- Add to Cart: Functionality that allows users to add selected products to the shopping cart.
+- Product Removal: Users have the ability to remove products individually or clear the cart completely.
+- Automatic Calculation: The application automatically calculates the total value based on the selected products.
+- Product Persistence: Products selected by users remain in the cart even after the page is refreshed, ensuring a continuous experience and avoiding loss of selections during navigation.
 <hr>
 
-#### Tecnologias utilizadas no desenvolvimento: 
+#### Technologies used in development: 
 - React JS
 - Toastify JS
 - SASS
