@@ -1,5 +1,5 @@
-### Burguer Kenzie
-Burger Kenzie is an application that simulates a fast food e-commerce, allowing the user to select and add desired products to the cart. Additionally, there is an option to remove all products, and the total value of selected items is automatically calculated.
+### Burguer Shot
+Burguer Shot is an application that simulates a fast food e-commerce, allowing the user to select and add desired products to the cart. Additionally, there is an option to remove all products, and the total value of selected items is automatically calculated.
 <hr>
 
 #### Features: 
