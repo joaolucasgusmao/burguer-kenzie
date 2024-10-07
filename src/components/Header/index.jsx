@@ -5,7 +5,7 @@ import styles from "./style.module.scss";
 export const Header = ({ openModal, value }) => {
   return (
     <header className={styles.header}>
-      <img src={Logo} alt="Logo Kenzie Burguer" />
+      <img src={Logo} alt="Logo Burguer Shot" />
       <div>
         <button onClick={openModal}>
           <MdShoppingCart className={styles.cart} color="#bdbdbd" size={25} />
